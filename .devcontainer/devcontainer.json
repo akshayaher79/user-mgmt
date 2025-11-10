@@ -1,0 +1,9 @@
+{
+  "name": "User-Mgmt",
+  "image": "mcr.microsoft.com/vscode/devcontainers/java:17", 
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [8080, 5432],
+  "postCreateCommand": "mvn -v || true"
+}
