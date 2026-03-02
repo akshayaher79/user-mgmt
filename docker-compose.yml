@@ -1,8 +1,23 @@
 name: user-mgmt
 
 services:
+  user-mgmt-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: user-mgmt-service
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      DB_PASSWORD: ${DB_PASSWORD:-letmein}
+      JWT_SECRET: ${JWT_SECRET:-R8HNg7CEupCmYvSyXVqGxpVhaa0NIsIX5yLVxTyfAVhNjniLX44}
+      LOG_LEVEL: ${LOG_LEVEL}
+    depends_on:
+      - postgres
+
   postgres:
-    image: postgres
+    image: postgres:17
     container_name: user-db
     restart: always
     environment:
